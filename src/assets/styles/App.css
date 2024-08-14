@@ -1,0 +1,125 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Company Info Board */
+.container {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.col-4 {
+  flex: 0 0 33.33333%;
+  max-width: 33.33333%;
+}
+
+/* Specific background colors */
+#compare-1-1 {
+  background-color: #1565c0;
+}
+
+#compare-1-2 {
+  background-color: #1976d2;
+}
+
+#compare-1-3 {
+  background-color: #1e88e5;
+}
+
+#compare-4-3 {
+  background-color: #00897b;
+}
+
+/* Comparison Board */
+#compare-1-1 {
+  background-color: #1565c0;
+}
+
+#compare-1-2 {
+  background-color: #1976d2;
+}
+
+#compare-1-3 {
+  background-color: #1e88e5;
+}
+
+#compare-2-1 {
+  background-color: #2e7d32;
+}
+
+#compare-2-2 {
+  background-color: #388e3c;
+}
+
+#compare-2-3 {
+  background-color: #43a047;
+}
+
+#compare-3-1 {
+  background-color: #c62828;
+}
+
+#compare-3-2 {
+  background-color: #d32f2f;
+}
+
+#compare-3-3 {
+  background-color: #e53935;
+}
+
+#compare-4-1 {
+  background-color: #00695c;
+}
+
+#compare-4-2 {
+  background-color: #00796b;
+}
+
+#compare-4-3 {
+  background-color: #00897b;
+}

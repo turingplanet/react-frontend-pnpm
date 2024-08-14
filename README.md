@@ -1,70 +1,266 @@
-# Getting Started with Create React App
+# Frontend Setup Guide
+## Prerequisites
+1. Ensure the backend API is properly configured. You can find the detailed setup instructions [here](https://github.com/turingplanet/unified-api/tree/main)
+2. Install Node.js 
+3. Install pnpm package manager globally:
+```
+npm install -g pnpm
+```
+## Setting up the Frontend
+Install dependencies:
+```
+pnpm install
+```
+Start the development server:
+```
+pnpm start
+```
+The application should now be running on http://localhost:3000 (or another port if specified).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Testing
+To run tests with coverage:
+```
+pnpm jest --coverage --silent
+```
 
-## Available Scripts
+# Top 3 Frontend Frameworks Setup Guide
 
-In the project directory, you can run:
+The following guide provides instructions for setting up sample projects using Angular, React, and Vue.js. Each project includes a simple counter and data binding example.
 
-### `npm start`
+## Angular Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Install Angular CLI globally:
+   ```
+   npm install -g @angular/cli
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. Create a new Angular project:
+   ```
+   ng new angular-test
+   cd angular-test
+   ```
 
-### `npm test`
+3. Replace the content of `src/app/app.component.ts` with:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```typescript
+   import { Component } from '@angular/core';
+   import { CommonModule } from '@angular/common';
+   import { FormsModule } from '@angular/forms';
 
-### `npm run build`
+   @Component({
+     selector: 'app-root',
+     standalone: true,
+     imports: [CommonModule, FormsModule],
+     template: `
+       <h1>Angular Counter and Data Binding Example</h1>
+       <div>
+         <h2>Counter: {{ count }}</h2>
+         <button (click)="increment()">Increment</button>
+         <button (click)="decrement()">Decrement</button>
+       </div>
+       <div>
+         <h2>Data Binding Example</h2>
+         <input [(ngModel)]="inputText" placeholder="Type something...">
+         <p>You typed: {{ inputText }}</p>
+       </div>
+     `,
+     styles: [`
+     button {
+       background-color: #4CAF50;
+       border: none;
+       color: white;
+       padding: 10px 20px;
+       text-align: center;
+       text-decoration: none;
+       display: inline-block;
+       font-size: 16px;
+       margin: 4px 2px;
+       cursor: pointer;
+       border-radius: 4px;
+     }
+     `]
+   })
+   export class AppComponent {
+     count: number = 0;
+     inputText: string = '';
+     increment() {
+       this.count++;
+     }
+     decrement() {
+       this.count--;
+     }
+   }
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Run the Angular app:
+   ```
+   ng serve
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   The app will be available at `http://localhost:4200`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## React Setup
 
-### `npm run eject`
+1. Create a new React project:
+   ```
+   npx create-react-app react-test
+   cd react-test
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Replace the content of `src/App.js` with:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```jsx
+   import React, { useState } from 'react';
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   function App() {
+     const [count, setCount] = useState(0);
+     const [inputText, setInputText] = useState('');
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+     const increment = () => {
+       setCount(prevCount => prevCount + 1);
+     };
 
-## Learn More
+     const decrement = () => {
+       setCount(prevCount => prevCount - 1);
+     };
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+     const handleInputChange = (event) => {
+       setInputText(event.target.value);
+     };
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+     const buttonStyle = {
+       backgroundColor: '#4CAF50',
+       border: 'none',
+       color: 'white',
+       padding: '10px 20px',
+       textAlign: 'center',
+       textDecoration: 'none',
+       display: 'inline-block',
+       fontSize: '16px',
+       margin: '4px 2px',
+       cursor: 'pointer',
+       borderRadius: '4px',
+     };
 
-### Code Splitting
+     return (
+       <div>
+         <h1>React Counter and Data Binding Example</h1>
+         <div>
+           <h2>Counter: {count}</h2>
+           <button style={buttonStyle} onClick={increment}>Increment</button>
+           <button style={buttonStyle} onClick={decrement}>Decrement</button>
+         </div>
+         <div>
+           <h2>Data Binding Example</h2>
+           <input 
+             value={inputText}
+             onChange={handleInputChange}
+             placeholder="Type something..."
+           />
+           <p>You typed: {inputText}</p>
+         </div>
+       </div>
+     );
+   }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   export default App;
+   ```
 
-### Analyzing the Bundle Size
+3. Run the React app:
+   ```
+   npm start
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   The app will be available at `http://localhost:3000`.
 
-### Making a Progressive Web App
+## Vue.js Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Install Vue CLI globally:
+   ```
+   npm install -g @vue/cli
+   ```
 
-### Advanced Configuration
+2. Create a new Vue project:
+   ```
+   vue create vue-test
+   cd vue-test
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+3. Replace the content of `src/App.vue` with:
 
-### Deployment
+   ```vue
+   <template>
+     <div>
+       <h1>Vue Counter and Data Binding Example</h1>
+       <div>
+         <h2>Counter: {{ count }}</h2>
+         <button @click="increment" class="button">Increment</button>
+         <button @click="decrement" class="button">Decrement</button>
+       </div>
+       <div>
+         <h2>Data Binding Example</h2>
+         <input v-model="inputText" placeholder="Type something...">
+         <p>You typed: {{ inputText }}</p>
+       </div>
+     </div>
+   </template>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   <script>
+   import { ref } from 'vue'
 
-### `npm run build` fails to minify
+   export default {
+     name: 'App',
+     setup() {
+       const count = ref(0)
+       const inputText = ref('')
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+       const increment = () => {
+         count.value++
+       }
+
+       const decrement = () => {
+         count.value--
+       }
+
+       return {
+         count,
+         inputText,
+         increment,
+         decrement
+       }
+     }
+   }
+   </script>
+
+   <style scoped>
+   .button {
+     background-color: #4CAF50;
+     border: none;
+     color: white;
+     padding: 10px 20px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 16px;
+     margin: 4px 2px;
+     cursor: pointer;
+     border-radius: 4px;
+   }
+   </style>
+   ```
+
+4. Run the Vue app:
+   ```
+   npm run serve
+   ```
+
+   The app will be available at `http://localhost:8080`.
+
+## Summary
+
+Each of these setups creates a simple app with a counter and a text input demonstrating data binding. The styling is kept minimal for clarity.
+
+To run each project:
+- Angular: `ng serve`
+- React: `npm start`
+- Vue: `npm run serve`
